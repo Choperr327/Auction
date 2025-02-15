@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Аукціон</title>
+</head>
+<body>
+    <h1>Лоти на аукціоні</h1>
+    <ul>
+        {% for item in items.items %}
+            <li>
+                <a href="{{ url_for('item', item_id=item.id) }}">{{ item.name }}</a>
+                - Поточна ціна: {{ item.current_price }}
+                {% if item.is_closed %}(Закрито){% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div>
+        {% if items.has_prev %}
+            <a href="{{ url_for('index', page=items.prev_num) }}">Попередня</a>
+        {% endif %}
+        {% if items.has_next %}
+            <a href="{{ url_for('index', page=items.next_num) }}">Наступна</a>
+        {% endif %}
+    </div>
+</body>
+</html>
