@@ -1,1 +1,314 @@
+# Створено https://www.toptal.com/developers/gitignore/api/venv,pycharm,visualstudiocode,flask
+# Редагувати на https://www.toptal.com/developers/gitignore?templates=venv,pycharm,visualstudiocode,flask
 
+### Колба ###
+примірник/*
+!instance/.gitignore
+.webassets-cache
+.env
+
+### Стек Flask.Python ###
+# Зібрані по байтам / оптимізовані / файли DLL
+__pycache__/
+*.py[код]
+*$py.class
+
+# розширення C
+*.так
+
+# Розповсюдження / упаковка
+.Python
+будувати/
+розвивати яйця/
+dist/
+завантаження/
+яйця/
+.яйця/
+lib/
+lib64/
+частини/
+sdist/
+змінна/
+колеса/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.яйце
+МАНІФЕСТ
+
+# PyInstaller
+# Зазвичай ці файли записуються за допомогою сценарію python із шаблону
+# перед тим, як PyInstaller створить exe, щоб додати в нього дату/іншу інформацію.
+*.маніфест
+*.spec
+
+# Журнали інсталятора
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Звіти про модульне тестування / покриття
+htmlcov/
+.tox/
+.nox/
+.покриття
+.покриття.*
+.cache
+nosetests.xml
+coverage.xml
+*.обкладинка
+*.py, обкладинка
+.hypothesis/
+.pytest_cache/
+обкладинка/
+
+# Переклади
+*.mo
+*.горщик
+
+# Речі Django:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-журнал
+
+# Речі з колби:
+примірник/
+
+# Scrapy речі:
+.скреб
+
+# Документація Sphinx
+docs/_build/
+
+# PyBuilder
+.pybuilder/
+мета/
+
+# Блокнот Юпітер
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+# Для бібліотеки чи пакета ви можете проігнорувати ці файли, оскільки код є
+# призначений для роботи в кількох середовищах; інакше перевірте їх у:
+# .python-версія
+
+# pipenv
+# Відповідно до pypa/pipenv#598, рекомендовано включити Pipfile.lock в контроль версій.
+# Однак у випадку співпраці, якщо є залежності чи залежності, що стосуються певної платформи
+# не маючи міжплатформної підтримки, pipenv може встановлювати залежності, які не працюють або ні
+# встановити всі необхідні залежності.
+#Pipfile.lock
+
+#поезія
+# Подібно до Pipfile.lock, зазвичай рекомендується включати poetry.lock в контроль версій.
+# Це особливо рекомендовано для бінарних пакетів, щоб забезпечити відтворюваність, і багато іншого
+# зазвичай ігнорується для бібліотек.
+# https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
+#поезія.замок
+
+# pdm
+# Подібно до Pipfile.lock, зазвичай рекомендується включати pdm.lock в контроль версій.
+#pdm.lock
+# pdm зберігає конфігурації для всього проекту в .pdm.toml, але рекомендується не включати його
+# в контролі версій.
+# https://pdm.fming.dev/#use-with-ide
+.pdm.toml
+
+# PEP 582; використовується, наприклад, github.com/David-OConnor/pyflow і github.com/pdm-project/pdm
+__pypackages__/
+
+# Селера
+celerybeat-розклад
+celerybeat.pid
+
+# Проаналізовані файли SageMath
+*.sage.py
+
+# Середовища
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Налаштування проекту Spyder
+.spyderproject
+.spyproject
+
+# Налаштування проекту Rope
+.ropeproject
+
+# документація mkdocs
+/сайт
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Перевірка типу багаття
+.pyre/
+
+# аналізатор статичного типу pytype
+.pytype/
+
+# Символи налагодження Cython
+cython_debug/
+
+# PyCharm
+# Спеціальний шаблон JetBrains зберігається в окремому JetBrains.gitignore, який може
+# можна знайти за адресою https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+# і може бути доданий до глобального gitignore або об’єднаний у цей файл. Для більш ядерного
+# параметр (не рекомендовано) ви можете розкоментувати наступне, щоб ігнорувати всю папку ідей.
+#.idea/
+
+### PyCharm ###
+# Охоплює IDE JetBrains: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm і Rider
+# Посилання: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
+
+# Специфічні для користувача речі
+.idea/**/workspace.xml
+.idea/**/tasks.xml
+.idea/**/usage.statistics.xml
+.idea/**/словники
+.idea/**/полиця
+
+# AWS для користувача
+.idea/**/aws.xml
+
+# Згенеровані файли
+.idea/**/contentModel.xml
+
+# Чутливі або інтенсивні файли
+.idea/**/dataSources/
+.idea/**/dataSources.ids
+.idea/**/dataSources.local.xml
+.idea/**/sqlDataSources.xml
+.idea/**/dynamic.xml
+.idea/**/uiDesigner.xml
+.idea/**/dbnavigator.xml
+
+# Gradle
+.idea/**/gradle.xml
+.idea/**/libraries
+
+# Gradle і Maven з автоімпортом
+# Під час використання Gradle або Maven із автоматичним імпортом вам слід виключити файли модулів,
+# оскільки вони будуть створені заново та можуть призвести до відтоку. Розкоментуйте, якщо використовуєте
+# автоімпорт.
+# .idea/artefacts
+# .idea/compiler.xml
+# .idea/jarRepositories.xml
+# .idea/modules.xml
+# .idea/*.iml
+# .idea/modules
+# *.iml
+# *.ipr
+
+# CMake
+cmake-build-*/
+
+# Плагін Mongo Explorer
+.idea/**/mongoSettings.xml
+
+# Файловий формат проекту
+*.iws
+
+# IntelliJ
+поза/
+
+# плагін mpeltonen/sbt-idea
+.idea_modules/
+
+# Плагін JIRA
+atlassian-ide-plugin.xml
+
+# Плагін Cursive Clojure
+.idea/replstate.xml
+
+# Плагін SonarLint
+.idea/sonarlint/
+
+# Плагін Crashlytics (для Android Studio та IntelliJ)
+com_crashlytics_export_strings.xml
+crashlytics.properties
+crashlytics-build.properties
+тканина.властивості
+
+# Клієнт Rest на основі редактора
+.idea/httpRequests
+
+# Серіалізований кеш-файл Android Studio 3.1+
+.idea/caches/build_file_checksums.ser
+
+### Патч PyCharm ###
+# Причина коментаря: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
+
+# *.iml
+# modules.xml
+# .idea/misc.xml
+# *.ipr
+
+# Плагін Sonarlint
+# https://plugins.jetbrains.com/plugin/7973-sonarlint
+.idea/**/sonarlint/
+
+# Плагін SonarQube
+# https://plugins.jetbrains.com/plugin/7238-sonarqube-community-plugin
+.idea/**/sonarIssues.xml
+
+# Плагін Markdown Navigator
+# https://plugins.jetbrains.com/plugin/7896-markdown-navigator-enhanced
+.idea/**/markdown-navigator.xml
+.idea/**/markdown-navigator-enh.xml
+.idea/**/markdown-navigator/
+
+# Помилка створення кеш-файлу
+# Перегляньте https://youtrack.jetbrains.com/issue/JBR-2257
+.idea/$CACHE_FILE$
+
+# Плагін CodeStream
+# https://plugins.jetbrains.com/plugin/12206-codestream
+.idea/codestream.xml
+
+# Набір інструментів Azure для плагіна IntelliJ
+# https://plugins.jetbrains.com/plugin/8053-azure-toolkit-for-intellij
+.idea/**/azureSettings.xml
+
+### venv ###
+# Virtualenv
+# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
+[Bb]в
+[Ii]включити
+[Ll]ib
+[Ll]ib64
+[Ll]місцевий
+[Ss] скрипти
+pyvenv.cfg
+pip-selfcheck.json
+
+### VisualStudioCode ###
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-nippets
+
+# Локальна історія для Visual Studio Code
+.history/
+
+# Вбудовані розширення коду Visual Studio
+*.vsix
+
+### Патч VisualStudioCode ###
+# Ігнорувати всю локальну історію файлів
+.історія
+.іонід
+
+# Кінець https://www.toptal.com/developers/gitignore/api/venv,pycharm,visualstudiocode,flask
