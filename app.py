@@ -2,39 +2,29 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
+from models import db, Item, Bid
+import click
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///auction.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supersecretkey'
 
-db = SQLAlchemy(app)
+# Ініціалізація db з додатком
+db.init_app(app)
 
 # Ініціалізація Flask-Admin
 admin = Admin(app, name='Аукціон', template_mode='bootstrap3')
-
-# Моделі
-class Item(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100), nullable=False)
-    description = db.Column(db.Text, nullable=False)
-    starting_price = db.Column(db.Float, nullable=False)
-    current_price = db.Column(db.Float, nullable=False)
-    bids = db.relationship('Bid', backref='item', lazy=True)
-
-class Bid(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    bidder_name = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Float, nullable=False)
-    item_id = db.Column(db.Integer, db.ForeignKey('item.id'), nullable=False)
 
 # Додавання моделей до адмін-панелі
 admin.add_view(ModelView(Item, db.session))
 admin.add_view(ModelView(Bid, db.session))
 
-@app.before_first_request
-def create_tables():
+@app.cli.command('init-db')
+def init_db():
+    """Створення бази даних і таблиць."""
     db.create_all()
+    print("База даних створена!")
 
 @app.route('/')
 def index():
@@ -63,5 +53,15 @@ def bid(item_id):
 
     return redirect(url_for('item', item_id=item_id))
 
+@app.route('/auction')
+def about():
+    return render_template('auction.html')
+
+@app.route('/register')
+def contact():
+    return render_template('register.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
+
+

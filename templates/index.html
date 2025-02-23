@@ -1,29 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Аукціон</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
-    <h1>Лоти на аукціоні</h1>
-    <ul>
-        {% for item in items.items %}
-            <li>
-                <a href="{{ url_for('item', item_id=item.id) }}">{{ item.name }}</a>
-                - Поточна ціна: {{ item.current_price }}
-                {% if item.is_closed %}(Закрито){% endif %}
-            </li>
-        {% endfor %}
-    </ul>
+    <header>
+        <div class="nav-container">
+            <h1>🔨 Онлайн Аукціон</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="{{ home_url }}">Головна</a></li>
+                    <li><a href="{{ auction_url }}">Аукціон</a></li>
+                    <li><a href="{{ register_url }}">Зареєструватися</a></li>
+                    <li><a href="{{ login_url }}">Увійти</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h2>Активні Лоти</h2>
+        <ul class="auction-list">
+            {% for item in items.items %}
+                <li class="auction-item">
+                    <div class="item-info">
+                        <a href="{{ url_for('auctions.auction_detail', item_id=item.id) }}" class="item-name">{{ item.name }}</a>
+                        <p class="item-desc">{{ item.description[:100] }}...</p>
+                        <span class="price">${{ item.current_price }}</span>
+                        {% if item.is_closed %}
+                            <span class="closed">(Закрито)</span>
+                        {% endif %}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
 
-    <div>
-        {% if items.has_prev %}
-            <a href="{{ url_for('index', page=items.prev_num) }}">Попередня</a>
-        {% endif %}
-        {% if items.has_next %}
-            <a href="{{ url_for('index', page=items.next_num) }}">Наступна</a>
-        {% endif %}
+        <div class="pagination">
+            {% if items.has_prev %}
+                <a href="{{ url_for('auctions.auctions', page=items.prev_num) }}" class="btn">⬅ Попередня</a>
+            {% endif %}
+            {% if items.has_next %}
+                <a href="{{ url_for('auctions.auctions', page=items.next_num) }}" class="btn">Наступна ➡</a>
+            {% endif %}
+        </div>
     </div>
+
+    <footer>
+        <p>© 2025 Онлайн Аукціон | Всі права захищені</p>
+    </footer>
 </body>
 </html>
+

@@ -1,0 +1,98 @@
+/* Загальні стилі */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #74ebd5, #acb6e5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* Контейнер форми входу */
+.login-container {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 400px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Заголовок */
+h1 {
+    font-size: 2.2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Поля вводу */
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Ефект фокусування на полі вводу */
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+/* Кнопка входу */
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 15px;
+    width: 100%;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+}
+
+/* Анімація натискання на кнопку */
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* Додатковий блок для посилань */
+.extra-links {
+    margin-top: 15px;
+}
+
+.extra-links a {
+    text-decoration: none;
+    color: #007bff;
+    font-size: 1em;
+    transition: color 0.3s ease-in-out;
+}
+
+.extra-links a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+/* Анімація появи */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
