@@ -27,7 +27,7 @@
         const passwordInput = document.getElementById('password');
         const errorMessage = document.getElementById('error-message');
 
-        form.addEventListener('submit', function(event) {
+        form.addEventListener('submit', async function(event) {
             errorMessage.textContent = '';  
 
             const username = usernameInput.value.trim();
@@ -45,7 +45,31 @@
                 return;
             }
 
+            try {
+                // Додаткові перевірки на сервері
+                const response = await fetch('/login', {  // '/login' - це місце для вашого серверного endpoint
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username: username, password: password })
+                });
+
+                const data = await response.json();
+                
+                if (response.ok) {
+                    // Якщо вхід успішний, перенаправляємо на головну сторінку або іншу
+                    window.location.href = '/dashboard';  // Місце для вашої цільової сторінки
+                } else {
+                    errorMessage.textContent = data.message || 'Не вдалося увійти. Спробуйте ще раз.';
+                }
+            } catch (error) {
+                errorMessage.textContent = 'Сталася помилка при зв\'язку з сервером. Спробуйте пізніше.';
+            }
+
+            event.preventDefault();  // Забороняємо стандартне відправлення форми
         });
     </script>
 </body>
 </html>
+

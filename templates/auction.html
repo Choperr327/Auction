@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сторінка аукціону</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>🔨 Аукціонні лоти</h1>
+    </header>
+
+    <main>
+        <h2>Список лотів</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Опис</th>
+                    <th>Поточна ціна</th>
+                    <th>Зробити ставку</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td><a href="{{ url_for('item', item_id=item.id) }}">{{ item.name }}</a></td>
+                    <td>{{ item.description }}</td>
+                    <td>{{ item.current_price }} грн</td>
+                    <td>
+                        <form action="{{ url_for('bid', item_id=item.id) }}" method="POST">
+                            <input type="text" name="bidder_name" placeholder="Ваше ім'я" required>
+                            <input type="number" name="amount" min="{{ item.current_price + 1 }}" required>
+                            <button type="submit">Ставка</button>
+                        </form>
+                    </td>
+                </tr>
+                {% else %}
+                <tr>
+                    <td colspan="4">Немає доступних лотів.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

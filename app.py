@@ -54,14 +54,20 @@ def bid(item_id):
     return redirect(url_for('item', item_id=item_id))
 
 @app.route('/auction')
-def about():
+def auction():
+    items = Item.query.all()
     return render_template('auction.html')
 
 @app.route('/register')
-def contact():
+def register():
     return render_template('register.html')
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
+
 
 

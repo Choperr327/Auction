@@ -12,15 +12,17 @@
             <h1>🔨 Онлайн Аукціон</h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="{{ home_url }}">Головна</a></li>
-                    <li><a href="{{ auction_url }}">Аукціон</a></li>
-                    <li><a href="{{ register_url }}">Зареєструватися</a></li>
-                    <li><a href="{{ login_url }}">Увійти</a></li>
+                    <li><a href="{{ url_for('index') }}">Індекс</a></li>
+                    <li><a href="{{ url_for('auction') }}">Аукціон</a></li>
+                    <li><a href="{{ url_for('register') }}">Зареєструватися</a></li>
+                    <li><a href="{{ url_for('login') }}">Увійти</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
+</body>
+</html>
+
     <div class="container">
         <h2>Активні Лоти</h2>
         <ul class="auction-list">
