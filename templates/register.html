@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Форма реєстрації на сайті. Заповніть всі поля для створення акаунта.">
+    <title>Реєстрація користувача</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Реєстрація</h2>
+        <form action="register.php" method="POST" id="registrationForm">
+            <label for="username">Ім'я користувача:</label>
+            <input type="text" id="username" name="username" required placeholder="Введіть ваше ім'я">
+            
+            <label for="email">Електронна пошта:</label>
+            <input type="email" id="email" name="email" required placeholder="Введіть ваш email">
+            
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password" required placeholder="Введіть пароль">
+            
+            <label for="confirmPassword">Підтвердження пароля:</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Підтвердження пароля">
+            
+            <button type="submit">Зареєструватися</button>
+        </form>
+        <div class="error-message" id="error-message"></div>
+    </div>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {
+            let password = document.getElementById("password").value;
+            let confirmPassword = document.getElementById("confirmPassword").value;
+
+            if (password !== confirmPassword) {
+                event.preventDefault();
+                document.getElementById("error-message").textContent = "Паролі не співпадають.";
+            } else {
+                document.getElementById("error-message").textContent = "";
+            }
+        });
+    </script>
+</body>
+</html>

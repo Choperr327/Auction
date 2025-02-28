@@ -12,7 +12,6 @@
             <h1>🔨 Онлайн Аукціон</h1>
             <nav>
                 <ul class="nav-links">
-                    <li><a href="{{ url_for('index') }}">Індекс</a></li>
                     <li><a href="{{ url_for('auction') }}">Аукціон</a></li>
                     <li><a href="{{ url_for('register') }}">Зареєструватися</a></li>
                     <li><a href="{{ url_for('login') }}">Увійти</a></li>
@@ -20,29 +19,47 @@
             </nav>
         </div>
     </header>
-</body>
-</html>
 
     <div class="container">
         <h2>Активні Лоти</h2>
-        <ul class="auction-list">
+                <label for="price">Максимальна ціна:</label>
+                <input type="number" name="max_price" id="max_price" placeholder="Введіть максимальну ціну">
+
+                <label for="sort">Сортування:</label>
+                <select name="sort" id="sort">
+                    <option value="newest">Найновіші</option>
+                    <option value="price_asc">Ціна (від найменшої)</option>
+                    <option value="price_desc">Ціна (від найбільшої)</option>
+                </select>
+
+                <button type="submit" class="btn">Застосувати</button>
+            </form>
+        </div>
+
+        <!-- Секція для карток лотів -->
+        <div class="auction-items-container">
             {% for item in items.items %}
-                <li class="auction-item">
-                    <div class="item-info">
+                <div class="auction-item-card">
+                    <div class="auction-item-image">
+                        <img src="{{ item.image_url }}" alt="{{ item.name }}" class="item-image">
+                    </div>
+                    <div class="auction-item-details">
                         <a href="{{ url_for('auctions.auction_detail', item_id=item.id) }}" class="item-name">{{ item.name }}</a>
                         <p class="item-desc">{{ item.description[:100] }}...</p>
                         <span class="price">${{ item.current_price }}</span>
                         {% if item.is_closed %}
                             <span class="closed">(Закрито)</span>
+                        {% else %}
+                            <span class="time-left">Залишилось: {{ item.time_left }} годин</span>
                         {% endif %}
                     </div>
-                </li>
+                </div>
             {% endfor %}
-        </ul>
+        </div>
 
+        <!-- Пагінація -->
         <div class="pagination">
             {% if items.has_prev %}
-                <a href="{{ url_for('auctions.auctions', page=items.prev_num) }}" class="btn">⬅ Попередня</a>
             {% endif %}
             {% if items.has_next %}
                 <a href="{{ url_for('auctions.auctions', page=items.next_num) }}" class="btn">Наступна ➡</a>
@@ -53,6 +70,9 @@
     <footer>
         <p>© 2025 Онлайн Аукціон | Всі права захищені</p>
     </footer>
+
 </body>
 </html>
+
+
 
