@@ -1,6 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FloatField, TextAreaField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms.validators import DataRequired, Email, Length, URL
 
 class RegisterForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
@@ -23,6 +23,7 @@ class AddAuctionItemForm(FlaskForm):
     description = TextAreaField('Description', validators=[DataRequired()])
     starting_price = FloatField('Starting Price', validators=[DataRequired()])
     current_bid = FloatField('Current Bid', default=0.0)
+    image_url = StringField('Посилання на зображення', validators=[URL(message="Введіть коректне посилання на зображення.")])
     submit = SubmitField('Add Auction Item')
 
 
