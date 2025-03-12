@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Деталі лота - {{ item.name }}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">{{ item.name }}</h1>
+
+        <div class="row">
+            <div class="col-md-6">
+                <img src="{{ item.image_url }}" class="img-fluid" alt="{{ item.name }}">
+            </div>
+            <div class="col-md-6">
+                <h4>Опис:</h4>
+                <p>{{ item.description }}</p>
+                <h5>Початкова ціна: ${{ item.starting_price }}</h5>
+                <h5>Поточна ставка: ${{ item.current_bid }}</h5>
+                
+                {% if current_user.is_authenticated %}
+                    <form method="POST">
+                        <div class="form-group">
+                            <label for="amount">Ваша ставка:</label>
+                            <input type="number" name="amount" class="form-control" step="0.01" min="{{ item.current_bid + 0.10 }}" required>
+                        </div>
+                        <button type="submit" class="btn btn-success">Зробити ставку</button>
+                    </form>
+                {% else %}
+                    <p>Увійдіть, щоб зробити ставку.</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <h4 class="mt-4">Історія ставок:</h4>
+        <ul class="list-group">
+            {% for bid in bids %}
+                <li class="list-group-item">
+                    <strong>{{ bid.bidder_name }}</strong>: ${{ bid.amount }}
+                </li>
+            {% else %}
+                <p class="text-center">Немає ставок для цього лота.</p>
+            {% endfor %}
+        </ul>
+
+        <div class="mt-4">
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Повернутися до аукціону</a>
+        </div>
+    </div>
+</body>
+</html>

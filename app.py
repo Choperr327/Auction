@@ -24,10 +24,9 @@ def index():
     items = AuctionItem.query.all()
     return render_template('index.html', items=items)
 
-@app.route('/auction')
-def auction():
-    items = AuctionItem.query.all()
-    return render_template('auction.html', items=items)
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/item/<int:item_id>', methods=['GET', 'POST'])
 def item(item_id):
@@ -51,7 +50,7 @@ def item(item_id):
         flash("Ставку зроблено!", "success")
         return redirect(url_for('item', item_id=item_id))
     
-    return render_template('item.html', item=item, bids=bids)
+    return render_template('item_details.html', item=item, bids=bids)
 
 @app.route('/add_item', methods=['GET', 'POST'])
 @login_required

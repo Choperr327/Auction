@@ -1,4 +1,4 @@
-<form method="POST" action="">
+<form method="POST">
     {{ form.hidden_tag() }}
     <div class="form-group">
         <label for="name">Назва лота</label>
@@ -16,5 +16,5 @@
         <label for="image_url">Посилання на зображення</label>
         {{ form.image_url(class="form-control", id="image_url") }}
     </div>
-    <button type="submit" class="btn btn-primary">Додати лот</button>
+    <button type="submit" class="btn btn-success">Додати лот</button>
 </form>
